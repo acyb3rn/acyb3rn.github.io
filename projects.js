@@ -60,7 +60,9 @@ const PROJECTS = [
     description:
       "Most site blockers work on brute force: either the tab opens or it does not. Aware sits in between, intercepting flagged sites and asking for a conscious decision before letting you through, which turns an automatic habit into a choice you have to actually make. Built end to end as my own product, from the idea through to the interface. Currently being prepared for release as a subscription product.",
     tech: ["javascript", "chrome extensions api"],
-    links: []
+    links: [
+      { label: "Visit Site", url: "https://getaware.app/en" }
+    ]
   },
   {
     id: "portex",
