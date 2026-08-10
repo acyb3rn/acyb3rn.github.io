@@ -1,5 +1,5 @@
 :root{
-  --bg:#0c0e12;
+  --bg:#090b0f;
   --bg-soft:#12151b;
   --panel:#151920;
   --line:#232830;
@@ -31,16 +31,17 @@ body{
 body::before{
   content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
   background:
-    linear-gradient(rgba(255,255,255,.016) 1px, transparent 1px) 0 0/64px 64px,
-    linear-gradient(90deg, rgba(255,255,255,.016) 1px, transparent 1px) 0 0/64px 64px;
-  mask-image:linear-gradient(180deg, #000 0%, transparent 70%);
-  -webkit-mask-image:linear-gradient(180deg, #000 0%, transparent 70%);
+    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px) 0 0/56px 56px,
+    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px) 0 0/56px 56px;
+  mask-image:linear-gradient(180deg, #000 0%, rgba(0,0,0,.35) 55%, transparent 90%);
+  -webkit-mask-image:linear-gradient(180deg, #000 0%, rgba(0,0,0,.35) 55%, transparent 90%);
 }
 body::after{
   content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
   background:
-    radial-gradient(90% 60% at 12% -10%, rgba(74,222,128,.07), transparent 60%),
-    radial-gradient(70% 50% at 88% -5%, rgba(124,183,255,.06), transparent 60%);
+    radial-gradient(80% 55% at 10% -8%,  rgba(74,222,128,.20), transparent 62%),
+    radial-gradient(70% 50% at 92% 2%,   rgba(88,150,255,.18), transparent 62%),
+    radial-gradient(90% 60% at 50% 108%, rgba(74,222,128,.07), transparent 65%);
 }
 a{color:var(--accent);text-decoration:none}
 a:hover{text-decoration:underline}
@@ -53,8 +54,8 @@ a:hover{text-decoration:underline}
 /* nav */
 .nav{
   position:sticky;top:0;z-index:50;
-  background:rgba(12,14,18,.82);
-  backdrop-filter:saturate(160%) blur(10px);
+  background:rgba(9,11,15,.72);
+  backdrop-filter:saturate(180%) blur(12px);
   border-bottom:1px solid var(--line-soft);
 }
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:56px}
@@ -95,11 +96,17 @@ h1{
 .links a{color:var(--dim)}
 .links a b{color:var(--text);font-weight:600}
 .links a:hover{color:var(--text);text-decoration:none}
+.cv-btn{
+  padding:7px 15px;border-radius:7px;
+  border:1px solid rgba(74,222,128,.32);
+  color:var(--accent)!important;background:rgba(74,222,128,.07);
+}
+.cv-btn:hover{border-color:var(--accent);text-decoration:none}
 
 /* projects */
 .projects{
   padding:56px 0 40px;
-  background:linear-gradient(180deg, rgba(255,255,255,.012), transparent 240px);
+  background:linear-gradient(180deg, rgba(255,255,255,.03), transparent 280px);
 }
 .section-title{
   font-family:var(--mono);font-size:13px;text-transform:uppercase;
