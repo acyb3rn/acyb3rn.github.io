@@ -72,7 +72,7 @@ const PROJECTS = [
       "Sole developer of the web presence for an international freight forwarding company: a bilingual English and Georgian marketing site plus a customer portal for tracking shipments. SEO and structured data handled properly rather than bolted on, and a container tracking integration so customers can check status without emailing anyone. Ongoing work rather than a finished handoff.",
     tech: ["react", "typescript", "tailwind", "supabase"],
     links: [
-      { label: "Visit Site", url: "" }
+      { label: "Visit Site", url: "https://portexgeo.com/" }
     ]
   },
   {
