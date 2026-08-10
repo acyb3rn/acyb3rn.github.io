@@ -15,7 +15,8 @@ const PROJECTS = [
     id: "product-field-analyzer",
     title: "Product Field Analyzer",
     badge: "open source",
-    media: "assets/product-field-analyzer.png",
+    media: "assets/product-field-analyzer.webm",
+    poster: "assets/product-field-analyzer.jpg",
     tagline: "Reads product photos to fill missing listing data",
     description:
       "Marketplace listings get rejected for missing attributes. The usual fix is to ask the brand and wait weeks, even though the answer is visible in the photo. The harder problem is being wrong at a volume where you cannot check every answer: every field carries a confidence score, <em>unknown</em> is an allowed answer rather than a guess, and a person approves each row before export.",

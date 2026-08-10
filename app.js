@@ -41,6 +41,9 @@
       media.loop = true;
       media.muted = true;
       media.playsInline = true;
+      media.preload = "metadata";
+      // Shown if the browser blocks autoplay or cannot decode the video.
+      if (project.poster) media.poster = project.poster;
     } else {
       media = el("img", "card-media");
       media.src = project.media;
