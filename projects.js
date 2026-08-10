@@ -79,7 +79,7 @@ const PROJECTS = [
     id: "choppy",
     title: "Choppy",
     badge: "client work",
-    media: "assets/choppy.png",
+    media: "assets/choppy.jpg",
     tagline: "Website for a Tbilisi barbershop",
     description:
       "A small marketing site for a local barbershop, built with Astro so the output is mostly static HTML. Nearly all the traffic arrives on a phone over mobile data, so page weight mattered more than anything clever. Straightforward brief, executed cleanly.",
