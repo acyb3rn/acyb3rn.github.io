@@ -78,14 +78,14 @@ const PROJECTS = [
   {
     id: "choppy",
     title: "Choppy",
-    badge: "client work",
+    badge: "spec build",
     media: "assets/choppy.jpg",
-    tagline: "Website for a Tbilisi barbershop",
+    tagline: "Concept site for a Tbilisi barbershop",
     description:
-      "A small marketing site for a local barbershop, built with Astro so the output is mostly static HTML. Nearly all the traffic arrives on a phone over mobile data, so page weight mattered more than anything clever. Straightforward brief, executed cleanly.",
+      "A speculative build for a local barbershop: booking-led layout, services, team, and opening hours, with a Georgian language toggle since that is what most of the customers actually read. Built with Astro so the output is mostly static HTML, because nearly all the traffic would arrive on a phone over mobile data and page weight matters more than anything clever.",
     tech: ["astro", "html", "css"],
     links: [
-      { label: "Visit Site", url: "" }
+      { label: "Preview", url: "" }
     ]
   }
 ];

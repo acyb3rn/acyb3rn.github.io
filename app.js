@@ -6,7 +6,8 @@
   var BADGE_CLASS = {
     "open source": "badge--open",
     "closed source": "badge--closed",
-    "client work": "badge--client"
+    "client work": "badge--client",
+    "spec build": "badge--spec"
   };
 
   function el(tag, className, html) {
