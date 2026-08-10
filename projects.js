@@ -69,9 +69,9 @@ const PROJECTS = [
     title: "Portex Georgia",
     badge: "client work",
     media: "assets/portex.jpg",
-    tagline: "Website and portal for a freight forwarder",
+    tagline: "Website and customer portal for a freight forwarder",
     description:
-      "Sole developer of the web presence for an international freight forwarding company: a bilingual English and Georgian marketing site plus a customer portal for tracking shipments. SEO and structured data handled properly rather than bolted on, and a container tracking integration so customers can check status without emailing anyone. Ongoing work rather than a finished handoff.",
+      "Sole developer of the web presence for an international freight forwarding company: a bilingual English and Georgian marketing site, plus an authenticated customer portal where clients see the status, route and ETA of every container without emailing anyone to ask. Supabase handles auth and Postgres behind it. SEO and structured data were built in rather than bolted on afterwards. Ongoing work rather than a finished handoff.",
     tech: ["react", "typescript", "tailwind", "supabase"],
     links: [
       { label: "Visit Site", url: "https://portexgeo.com/" }
