@@ -98,7 +98,27 @@
     body.appendChild(head);
 
     if (project.tagline) body.appendChild(el("p", "tagline", project.tagline));
-    if (project.description) body.appendChild(el("p", "desc", project.description));
+
+    if (project.description) {
+      var desc = el("p", "desc", project.description);
+      body.appendChild(desc);
+
+      // The description is clamped by CSS. Only offer the toggle when the
+      // text is actually taller than the clamp, which we can only tell once
+      // it has been laid out.
+      var more = el("button", "more", "Read more");
+      more.type = "button";
+      more.hidden = true;
+      more.addEventListener("click", function () {
+        var open = card.classList.toggle("is-open");
+        more.textContent = open ? "Show less" : "Read more";
+      });
+      body.appendChild(more);
+
+      requestAnimationFrame(function () {
+        if (desc.scrollHeight > desc.clientHeight + 2) more.hidden = false;
+      });
+    }
 
     if (project.tech && project.tech.length) {
       var tech = el("div", "tech");

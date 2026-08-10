@@ -135,7 +135,18 @@ h1{
   font-family:var(--mono);font-size:12.5px;color:var(--dim);
   margin:0 0 12px;line-height:1.45;
 }
-.desc{margin:0 0 16px;color:var(--dim);font-size:14.5px;line-height:1.62}
+.desc{
+  margin:0 0 16px;color:var(--dim);font-size:14.5px;line-height:1.62;
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:7;
+  overflow:hidden;
+}
+.card.is-open .desc{-webkit-line-clamp:unset;overflow:visible}
+.more{
+  align-self:flex-start;background:none;border:0;padding:0;margin:-8px 0 14px;
+  font:inherit;font-size:13px;color:var(--dim);cursor:pointer;
+  border-bottom:1px solid var(--line);
+}
+.more:hover{color:var(--accent);border-color:var(--accent-dim)}
 .desc code{
   font-family:var(--mono);font-size:.88em;background:var(--bg-soft);
   padding:1px 5px;border-radius:4px;color:var(--text);
