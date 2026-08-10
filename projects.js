@@ -55,7 +55,7 @@ const PROJECTS = [
     id: "aware",
     title: "Aware",
     badge: "closed source",
-    media: "assets/aware.png",
+    media: "assets/aware.jpg",
     tagline: "Chrome extension for intentional browsing",
     description:
       "Most site blockers work on brute force: either the tab opens or it does not. Aware sits in between, intercepting flagged sites and asking for a conscious decision before letting you through, which turns an automatic habit into a choice you have to actually make. Built end to end as my own product, from the idea through to the interface. Currently being prepared for release as a subscription product.",
@@ -66,7 +66,7 @@ const PROJECTS = [
     id: "portex",
     title: "Portex Georgia",
     badge: "client work",
-    media: "assets/portex.png",
+    media: "assets/portex.jpg",
     tagline: "Website and portal for a freight forwarder",
     description:
       "Sole developer of the web presence for an international freight forwarding company: a bilingual English and Georgian marketing site plus a customer portal for tracking shipments. SEO and structured data handled properly rather than bolted on, and a container tracking integration so customers can check status without emailing anyone. Ongoing work rather than a finished handoff.",
