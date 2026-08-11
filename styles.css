@@ -115,19 +115,16 @@ h1{
   font-family:var(--mono);font-size:var(--t-small);color:var(--accent);
   margin:0 0 26px;letter-spacing:-.01em;
 }
-.bio{max-width:640px}
+.bio{max-width:640px;margin-bottom:32px}
 .bio p{margin:0 0 14px;color:var(--dim);font-size:var(--t-body)}
 .bio a{color:var(--dim);border-bottom:1px solid var(--accent-dim)}
 .bio a:hover{color:var(--text);text-decoration:none}
-/* No single-side accent border: that is the most recognisable AI-UI tell.
-   The emphasis comes from the type instead. */
-.cta{
-  margin:26px 0 22px;
-  font-size:var(--t-body);color:var(--dim);max-width:640px;
+/* align-items:center so the CV button and the text links share a centre line
+   instead of sitting on mismatched baselines */
+.links{
+  display:flex;align-items:center;flex-wrap:wrap;gap:22px;
+  font-family:var(--mono);font-size:var(--t-small);
 }
-.cta a{border-bottom:1px solid var(--accent-dim)}
-.cta a:hover{text-decoration:none;border-color:var(--accent)}
-.links{display:flex;flex-wrap:wrap;gap:20px;font-family:var(--mono);font-size:var(--t-small)}
 .links a{color:var(--dim)}
 .links a b{color:var(--text);font-weight:600}
 .links a:hover{color:var(--text);text-decoration:none}
