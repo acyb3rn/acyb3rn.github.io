@@ -52,6 +52,19 @@
       new  5. Lab.docx
   =======================================
     Done. 90 new file(s) downloaded.</pre>
+
+    <pre class="island island--hl" aria-hidden="true">def safe_filename(name: str) -> str:
+    """Remove characters invalid in filenames."""
+    return re.sub(r'[\\/*?:"&lt;&gt;|]', "_", name).strip()</pre>
+
+    <pre class="island island--hr" aria-hidden="true">r = session.post(
+    f"{BASE_URL}/api/v1/auth/token/refresh",
+    json={"refresh_token": refresh_tok},
+    timeout=15,
+)
+r.raise_for_status()
+return r.json()["data"]["accessToken"]</pre>
+
     <div class="wrap">
       <h1>Aleksandre Giorgadze</h1>
       <p class="role">Python Developer &nbsp;/&nbsp; Automation &amp; AI-Augmented Internal Tools</p>
@@ -80,32 +93,18 @@
   </section>
 
   <section id="projects" class="projects">
-    <pre class="projects-code" aria-hidden="true">def extract_conditions(if_block: dict) -> dict[str, list[str]]:
-    """From an `if` block, pull out the condition enums we care about."""
-    conditions: dict[str, list[str]] = {}
-    if not isinstance(if_block, dict):
-        return conditions
-    for f in CONDITION_FIELDS:
-        vals = extract_enum_from_subschema(if_block, f)
-        if vals:
-            conditions[f] = vals
-    for f in INNER_CONDITION_FIELDS:
-        vals = extract_enum_from_subschema(if_block, f)
-        if vals:
-            conditions["size_container." + f] = vals
-    return conditions
+    <pre class="island island--pl" aria-hidden="true">def parse_model_json(content: str) -> dict[str, Any]:
+    try:
+        return json.loads(content)
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"not valid JSON: {content}") from exc</pre>
 
+    <pre class="island island--pr" aria-hidden="true">for f in CONDITION_FIELDS:
+    vals = extract_enum_from_subschema(if_block, f)
+    if vals:
+        conditions[f] = vals
+return conditions</pre>
 
-def determine_target_field(then_block: dict) -> str | None:
-    """Figure out which leaf field the `then` clause enumerates."""
-    props = then_block.get("properties", {})
-    for cname, cnode in _size_containers(props):
-        items = cnode.get("items", {}) if isinstance(cnode, dict) else {}
-        for entry in items.get("allOf", []) or []:
-            for k, v in entry.get("properties", {}).items():
-                if k in TARGET_LEAFS and "enum" in v:
-                    return cname + "." + k
-    return None</pre>
     <div class="wrap wrap--wide">
       <h2 class="section-title">Projects</h2>
       <div id="project-list"></div>
