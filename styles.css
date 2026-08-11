@@ -18,12 +18,15 @@
   --sans:var(--mono);
 
   /* One type scale, ~1.25 between steps, instead of eight sizes a pixel apart */
+  /* Stepped down 1px across the scale for density. --t-micro stays at 12:
+     it is already the floor, and 11px mono for the tags and tagline reads as
+     fine print rather than as small type. */
   --t-micro:12px;
-  --t-small:16px;   /* merged: a 12/13 pair had no perceptible step */
-  --t-body:16px;
-  --t-lead:20px;
-  --t-title:26px;
-  --t-hero:44px;
+  --t-small:15px;   /* merged: a 12/13 pair had no perceptible step */
+  --t-body:15px;
+  --t-lead:19px;
+  --t-title:25px;
+  --t-hero:43px;
 }
 
 *{box-sizing:border-box}
@@ -62,8 +65,12 @@ body::before{
 }
 a{color:var(--accent);text-decoration:none}
 a:hover{text-decoration:underline}
-.wrap{max-width:880px;margin:0 auto;padding:0 24px}
-.wrap--wide{max-width:1200px}
+/* One width for everything, so the nav brand, hero, cards and footer all sit on
+   the same left gutter. Previously nav sat at 880 and the grid at 1200, which
+   made the header look inset from the content it was labelling. Long-form text
+   is kept readable by .bio's own cap rather than by squeezing the page. */
+.wrap{max-width:1400px;margin:0 auto;padding:0 32px}
+.wrap--wide{max-width:1400px}
 
 .skip{position:absolute;left:-9999px}
 .skip:focus{left:24px;top:12px;background:var(--panel);padding:8px 14px;border-radius:6px;z-index:100}
@@ -164,7 +171,7 @@ h1{
 
 .cv-btn{
   display:inline-flex!important;align-items:center;height:38px;
-  font-size:var(--t-micro);padding:0 16px!important;border-radius:7px;
+  padding:0 18px!important;font-size:var(--t-micro);border-radius:7px;
   border:1px solid rgba(74,222,128,.32);
   color:var(--accent)!important;background:rgba(74,222,128,.07);
   margin-top:8px!important;
