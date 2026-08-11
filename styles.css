@@ -196,10 +196,11 @@ h1{
   -webkit-mask-image:radial-gradient(ellipse 72% 84% at 50% 50%,
     #000 30%, rgba(0,0,0,.45) 62%, transparent 84%);
 }
-.island--hl{ left:-26px;  bottom:18px; }
-.island--hr{ right:11%;   bottom:34px; opacity:.17; }
-.island--pl{ left:-34px;  top:96px;    opacity:.19; }
-.island--pr{ right:-10px; top:16px;    opacity:.20; }
+/* Positioned from the left so the block's own width decides where it ends and
+   nothing runs off the right edge. Both clear the copy: the hero one starts
+   past the contact lines, the projects one past the PROJECTS label. */
+.island--hr{ left:56%; bottom:8px; opacity:.20; }
+.island--pr{ left:30%; top:0;      opacity:.18; }
 
 .projects .wrap{position:relative;z-index:1}
 
