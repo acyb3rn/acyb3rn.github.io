@@ -39,13 +39,14 @@ body{
 /* Absolute, not fixed: the glow belongs to the top of the page and should
    scroll away rather than follow you down it. */
 body::after{
-  content:"";position:absolute;top:0;left:0;right:0;height:900px;
+  content:"";position:absolute;top:0;left:0;right:0;height:1600px;
   z-index:-1;pointer-events:none;
   background:
-    radial-gradient(75% 55% at 12% -12%, rgba(74,222,128,.15), transparent 62%),
-    radial-gradient(65% 48% at 90% -4%,  rgba(88,150,255,.12), transparent 62%);
-  mask-image:linear-gradient(180deg,#000 0%,#000 42%,transparent 88%);
-  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 42%,transparent 88%);
+    radial-gradient(70% 42% at 12% -14%, rgba(74,222,128,.15), transparent 68%),
+    radial-gradient(60% 38% at 90% -6%,  rgba(88,150,255,.12), transparent 68%);
+  /* Long, gentle falloff. A short mask reads as an edge, not a fade. */
+  mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.85) 25%,rgba(0,0,0,.35) 55%,transparent 100%);
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.85) 25%,rgba(0,0,0,.35) 55%,transparent 100%);
 }
 
 /* Film grain. Gives the flat surface some tooth so it stops reading as a void.
@@ -83,16 +84,11 @@ a:hover{text-decoration:underline}
 .nav nav a:hover{color:var(--text);text-decoration:none}
 
 /* hero */
-/* No divider rule. The hero ends by fading its own glow out into the page,
-   so the projects section arrives without a hard line. */
+/* No divider, and no second gradient here: stacking one fade on top of the
+   glow's own falloff is what produced a visible band. The glow alone does it. */
 .hero{
   padding:74px 0 76px;
   position:relative;overflow:hidden;
-}
-.hero::after{
-  content:"";position:absolute;left:0;right:0;bottom:0;height:220px;
-  pointer-events:none;
-  background:linear-gradient(180deg, transparent, var(--bg));
 }
 /* Real output from the Argus run, ghosted in behind the hero. The texture is
    the work itself rather than a stock pattern. Hidden from assistive tech. */
