@@ -92,24 +92,22 @@ a:hover{text-decoration:underline}
 }
 /* Real output from the Argus run, ghosted in behind the hero. The texture is
    the work itself rather than a stock pattern. Hidden from assistive tech. */
-/* Two project screenshots receding into the background on the right. They sit
-   behind the log so the hero reads as a stack of the actual work. Everything
-   is masked toward the headline so the copy on the left stays clean. */
+/* Dark-only crops of two projects, placed apart rather than stacked. Each
+   dissolves at its own edges via a radial mask, so there are no visible
+   rectangles and nothing collides with the copy. */
 .hero-shots{
-  position:absolute;top:0;right:0;bottom:0;width:62%;
-  pointer-events:none;user-select:none;
-  mask-image:linear-gradient(255deg,#000 0%,#000 30%,rgba(0,0,0,.45) 62%,transparent 92%);
-  -webkit-mask-image:linear-gradient(255deg,#000 0%,#000 30%,rgba(0,0,0,.45) 62%,transparent 92%);
+  position:absolute;inset:0;pointer-events:none;user-select:none;overflow:hidden;
 }
-.hero-shots img{
+.shot{
   position:absolute;
-  width:640px;border-radius:10px;
-  border:1px solid rgba(255,255,255,.10);
-  box-shadow:0 24px 60px rgba(0,0,0,.55);
-  opacity:.30;
+  opacity:.22;
+  mask-image:radial-gradient(ellipse 62% 62% at 50% 50%, #000 25%, transparent 72%);
+  -webkit-mask-image:radial-gradient(ellipse 62% 62% at 50% 50%, #000 25%, transparent 72%);
 }
-.hero-shots img:nth-child(1){ top:34px;  right:-120px; transform:rotate(-3deg); }
-.hero-shots img:nth-child(2){ top:330px; right:60px;   transform:rotate(2.5deg); opacity:.24; }
+/* top left, above and behind the eyebrow */
+.shot--tl{ width:460px; top:-70px;  left:-130px; transform:rotate(-4deg); }
+/* lower middle, drifting under the CV button toward the right */
+.shot--bm{ width:820px; bottom:-150px; left:38%;  transform:rotate(2deg); opacity:.18; }
 
 @media (max-width:1100px){ .hero-shots{display:none} }
 
