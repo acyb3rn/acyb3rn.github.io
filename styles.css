@@ -92,27 +92,6 @@ a:hover{text-decoration:underline}
 }
 /* Real output from the Argus run, ghosted in behind the hero. The texture is
    the work itself rather than a stock pattern. Hidden from assistive tech. */
-/* Dark-only crops of two projects, placed apart rather than stacked. Each
-   dissolves at its own edges via a radial mask, so there are no visible
-   rectangles and nothing collides with the copy. */
-.hero-shots{
-  position:absolute;inset:0;pointer-events:none;user-select:none;overflow:hidden;
-}
-.shot{
-  position:absolute;
-  opacity:.22;
-  mask-image:radial-gradient(ellipse 62% 62% at 50% 50%, #000 25%, transparent 72%);
-  -webkit-mask-image:radial-gradient(ellipse 62% 62% at 50% 50%, #000 25%, transparent 72%);
-}
-/* Top left: fully in frame rather than clipped at the edge, so it reads as
-   a surface instead of stray fragments. */
-.shot--tl{ width:520px; top:26px; left:-60px; transform:rotate(-4deg); opacity:.20; }
-/* Bottom left, in the empty space under the CV button. Kept well clear of the
-   log on the right so two layers of small text never overlap. */
-.shot--bm{ width:760px; bottom:-190px; left:2%; transform:rotate(1.5deg); opacity:.16; }
-
-@media (max-width:1100px){ .hero-shots{display:none} }
-
 .hero-log{
   position:absolute;top:-20px;right:-20px;margin:0;
   font-family:var(--mono);font-size:14px;line-height:1.85;
