@@ -221,8 +221,16 @@ h1{
   font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.14em;
   text-transform:uppercase;color:#3c4550;
 }
-.card-body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
-.card-title{font-size:var(--t-lead);margin:0 0 6px;letter-spacing:-.015em;font-weight:650}
+/* Title left, status right, on one row above the media. */
+.card-head{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:16px 20px 14px;
+}
+.card-body{padding:16px 20px 20px;display:flex;flex-direction:column;flex:1}
+.card-title{
+  font-size:var(--t-lead);margin:0;letter-spacing:-.015em;font-weight:650;
+  min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
 .card-title a{color:var(--text)}
 .card-title a:hover{color:var(--accent);text-decoration:none}
 
@@ -241,18 +249,10 @@ h1{
   font-family:var(--mono);font-size:var(--t-micro);color:var(--dim);
   margin:0 0 12px;line-height:1.55;letter-spacing:.02em;
 }
+/* No clamp: descriptions run in full. */
 .desc{
-  margin:0 0 16px;color:var(--dim);font-size:var(--t-body);line-height:1.6;
-  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:7;
-  overflow:hidden;
+  margin:0 0 18px;color:var(--dim);font-size:var(--t-body);line-height:1.6;
 }
-.card.is-open .desc{-webkit-line-clamp:unset;overflow:visible}
-.more{
-  align-self:flex-start;background:none;border:0;padding:0;margin:-8px 0 14px;
-  font:inherit;font-size:var(--t-micro);color:var(--dim);cursor:pointer;
-  border-bottom:1px solid var(--line);
-}
-.more:hover{color:var(--accent);border-color:var(--accent-dim)}
 .desc code{
   font-family:var(--mono);font-size:.88em;background:var(--bg-soft);
   padding:1px 5px;border-radius:4px;color:var(--text);
@@ -263,12 +263,6 @@ h1{
   font-family:var(--mono);font-size:var(--t-micro);color:var(--dimmer);
   background:var(--bg-soft);border:1px solid var(--line-soft);
   padding:4px 9px;border-radius:3px;line-height:1.3;
-}
-/* Buttons left, status right, on one baseline. Works whether or not the card
-   has any buttons at all. */
-.card-foot{
-  display:flex;align-items:center;justify-content:space-between;
-  gap:12px;flex-wrap:wrap;
 }
 .actions{display:flex;flex-wrap:wrap;gap:10px}
 .btn{

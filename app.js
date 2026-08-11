@@ -73,10 +73,9 @@
     var card = el("article", "card");
     card.id = project.id;
 
-    card.appendChild(buildMedia(project));
-
-    var body = el("div", "card-body");
-
+    // Title and status sit above the media so the project is classified before
+    // you look at anything else.
+    var head = el("div", "card-head");
     var href = primaryUrl(project);
     var title = el("h3", "card-title");
     if (href) {
@@ -88,29 +87,23 @@
     } else {
       title.textContent = project.title;
     }
-    body.appendChild(title);
+    head.appendChild(title);
+    if (project.badge) {
+      head.appendChild(
+        el("span", "badge " + (BADGE_CLASS[project.badge] || ""), project.badge)
+      );
+    }
+    card.appendChild(head);
+
+    card.appendChild(buildMedia(project));
+
+    var body = el("div", "card-body");
 
     if (project.tagline) body.appendChild(el("p", "tagline", project.tagline));
 
+    // Shown in full. Truncating every card mid-sentence read as unfinished.
     if (project.description) {
-      var desc = el("p", "desc", project.description);
-      body.appendChild(desc);
-
-      // The description is clamped by CSS. Only offer the toggle when the
-      // text is actually taller than the clamp, which we can only tell once
-      // it has been laid out.
-      var more = el("button", "more", "Read more");
-      more.type = "button";
-      more.hidden = true;
-      more.addEventListener("click", function () {
-        var open = card.classList.toggle("is-open");
-        more.textContent = open ? "Show less" : "Read more";
-      });
-      body.appendChild(more);
-
-      requestAnimationFrame(function () {
-        if (desc.scrollHeight > desc.clientHeight + 2) more.hidden = false;
-      });
+      body.appendChild(el("p", "desc", project.description));
     }
 
     if (project.tech && project.tech.length) {
@@ -119,26 +112,18 @@
       body.appendChild(tech);
     }
 
-    // Footer row: buttons on the left, status label pushed to the right.
-    var foot = el("div", "card-foot");
-
-    var actions = el("div", "actions");
-    (project.links || []).filter(function (l) { return l.url; })
-      .forEach(function (l, i) {
+    var live = (project.links || []).filter(function (l) { return l.url; });
+    if (live.length) {
+      var actions = el("div", "actions");
+      live.forEach(function (l, i) {
         var btn = el("a", "btn" + (i === 0 ? " btn--primary" : ""), l.label);
         btn.href = l.url;
         btn.target = "_blank";
         btn.rel = "noopener";
         actions.appendChild(btn);
       });
-    foot.appendChild(actions);
-
-    if (project.badge) {
-      foot.appendChild(
-        el("span", "badge " + (BADGE_CLASS[project.badge] || ""), project.badge)
-      );
+      body.appendChild(actions);
     }
-    body.appendChild(foot);
 
     card.appendChild(body);
     return card;
