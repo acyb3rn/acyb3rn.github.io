@@ -24,7 +24,7 @@
   --t-micro:12px;
   --t-small:15px;   /* merged: a 12/13 pair had no perceptible step */
   --t-body:15px;
-  --t-lead:19px;
+  --t-lead:16px;
   --t-title:25px;
   --t-hero:43px;
 }
@@ -232,8 +232,8 @@ h1{
    nothing as "Amazon Size Rule…". The badge pins to the top right and never
    shrinks, so a long title takes a second line instead of losing its end. */
 .card-head{
-  display:flex;align-items:flex-start;justify-content:space-between;gap:14px;
-  padding:16px 20px 14px;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:10px;
+  padding:16px 18px 14px;
 }
 .card-body{padding:16px 20px 20px;display:flex;flex-direction:column;flex:1}
 .card-title{
@@ -246,10 +246,10 @@ h1{
 /* Squared off, not a pill. Sits top right beside the title. flex-shrink:0 so a
    long title pushes itself onto a second line instead of squeezing the badge. */
 .badge{
-  font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.1em;
-  text-transform:uppercase;padding:3px 9px;border-radius:3px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.06em;
+  text-transform:uppercase;padding:3px 7px;border-radius:3px;
   border:1px solid;white-space:nowrap;flex-shrink:0;
-  margin-top:3px;
+  margin-top:2px;
 }
 .badge--open{color:var(--accent);border-color:rgba(74,222,128,.32);background:rgba(74,222,128,.07)}
 .badge--closed{color:var(--dimmer);border-color:var(--line);background:var(--bg-soft)}
