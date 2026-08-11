@@ -214,13 +214,12 @@ h1{
 .card-title a{color:var(--text)}
 .card-title a:hover{color:var(--accent);text-decoration:none}
 
-/* Squared off, not a pill. Own line above the title so a long title can never
-   push it onto a second row and unbalance the card. */
+/* Squared off, not a pill. Lives bottom right in the footer row, opposite the
+   buttons, where it never competes with the title or wraps. */
 .badge{
-  align-self:flex-start;
   font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.1em;
   text-transform:uppercase;padding:3px 9px;border-radius:3px;
-  border:1px solid;white-space:nowrap;margin-bottom:10px;
+  border:1px solid;white-space:nowrap;
 }
 .badge--open{color:var(--accent);border-color:rgba(74,222,128,.32);background:rgba(74,222,128,.07)}
 .badge--closed{color:var(--dimmer);border-color:var(--line);background:var(--bg-soft)}
@@ -252,6 +251,12 @@ h1{
   font-family:var(--mono);font-size:var(--t-micro);color:var(--dimmer);
   background:var(--bg-soft);border:1px solid var(--line-soft);
   padding:4px 9px;border-radius:3px;line-height:1.3;
+}
+/* Buttons left, status right, on one baseline. Works whether or not the card
+   has any buttons at all. */
+.card-foot{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;flex-wrap:wrap;
 }
 .actions{display:flex;flex-wrap:wrap;gap:10px}
 .btn{

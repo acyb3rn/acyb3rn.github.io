@@ -77,14 +77,6 @@
 
     var body = el("div", "card-body");
 
-    // Badge sits on its own line above the title. Inline beside a long title it
-    // wrapped, which made that card's header taller than the others.
-    if (project.badge) {
-      body.appendChild(
-        el("span", "badge " + (BADGE_CLASS[project.badge] || ""), project.badge)
-      );
-    }
-
     var href = primaryUrl(project);
     var title = el("h3", "card-title");
     if (href) {
@@ -127,22 +119,26 @@
       body.appendChild(tech);
     }
 
-    var live = (project.links || []).filter(function (l) { return l.url; });
-    if (live.length) {
-      var actions = el("div", "actions");
-      live.forEach(function (l, i) {
+    // Footer row: buttons on the left, status label pushed to the right.
+    var foot = el("div", "card-foot");
+
+    var actions = el("div", "actions");
+    (project.links || []).filter(function (l) { return l.url; })
+      .forEach(function (l, i) {
         var btn = el("a", "btn" + (i === 0 ? " btn--primary" : ""), l.label);
         btn.href = l.url;
         btn.target = "_blank";
         btn.rel = "noopener";
         actions.appendChild(btn);
       });
-      body.appendChild(actions);
-    } else if (project.badge === "closed source") {
-      body.appendChild(
-        el("p", "note", "Closed source. Details and a walkthrough available on request.")
+    foot.appendChild(actions);
+
+    if (project.badge) {
+      foot.appendChild(
+        el("span", "badge " + (BADGE_CLASS[project.badge] || ""), project.badge)
       );
     }
+    body.appendChild(foot);
 
     card.appendChild(body);
     return card;
