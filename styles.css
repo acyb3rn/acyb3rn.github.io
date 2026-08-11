@@ -24,7 +24,7 @@
   --t-micro:12px;
   --t-small:15px;   /* merged: a 12/13 pair had no perceptible step */
   --t-body:15px;
-  --t-lead:16px;
+  --t-lead:19px;
   --t-title:25px;
   --t-hero:43px;
 }
@@ -235,7 +235,9 @@ h1{
   display:flex;align-items:flex-start;justify-content:space-between;gap:10px;
   padding:16px 18px 14px;
 }
-.card-body{padding:16px 20px 20px;display:flex;flex-direction:column;flex:1}
+/* 18px matches .card-head, so the title and the paragraph below it start on
+   the same vertical line. */
+.card-body{padding:16px 18px 20px;display:flex;flex-direction:column;flex:1}
 .card-title{
   font-size:var(--t-lead);margin:0;letter-spacing:-.015em;font-weight:650;
   min-width:0;line-height:1.25;overflow-wrap:break-word;

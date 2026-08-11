@@ -27,7 +27,7 @@ const PROJECTS = [
   },
   {
     id: "amazon-size-rule-extractor",
-    title: "Amazon Size Rule Extractor",
+    title: "Size Rule Extractor",
     badge: "open source",
     media: "assets/amazon-size-rule-extractor.png",
     tagline: "Flattens nested JSON Schema into something readable",
