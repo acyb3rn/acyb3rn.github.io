@@ -221,24 +221,28 @@ h1{
   text-transform:uppercase;color:#3c4550;
 }
 /* Title left, status right, on one row above the media. */
+/* Titles wrap rather than truncate: "Amazon Size Rule Extractor" told you
+   nothing as "Amazon Size Rule…". The badge pins to the top right and never
+   shrinks, so a long title takes a second line instead of losing its end. */
 .card-head{
-  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:14px;
   padding:16px 20px 14px;
 }
 .card-body{padding:16px 20px 20px;display:flex;flex-direction:column;flex:1}
 .card-title{
   font-size:var(--t-lead);margin:0;letter-spacing:-.015em;font-weight:650;
-  min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  min-width:0;line-height:1.25;overflow-wrap:break-word;
 }
 .card-title a{color:var(--text)}
 .card-title a:hover{color:var(--accent);text-decoration:none}
 
-/* Squared off, not a pill. Lives bottom right in the footer row, opposite the
-   buttons, where it never competes with the title or wraps. */
+/* Squared off, not a pill. Sits top right beside the title. flex-shrink:0 so a
+   long title pushes itself onto a second line instead of squeezing the badge. */
 .badge{
   font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.1em;
   text-transform:uppercase;padding:3px 9px;border-radius:3px;
-  border:1px solid;white-space:nowrap;
+  border:1px solid;white-space:nowrap;flex-shrink:0;
+  margin-top:3px;
 }
 .badge--open{color:var(--accent);border-color:rgba(74,222,128,.32);background:rgba(74,222,128,.07)}
 .badge--closed{color:var(--dimmer);border-color:var(--line);background:var(--bg-soft)}
