@@ -119,17 +119,22 @@ h1{
 .bio p{margin:0 0 14px;color:var(--dim);font-size:var(--t-body)}
 .bio a{color:var(--dim);border-bottom:1px solid var(--accent-dim)}
 .bio a:hover{color:var(--text);text-decoration:none}
-/* align-items:center so the CV button and the text links share a centre line
-   instead of sitting on mismatched baselines */
+/* Every item is the same fixed height and centres its own text, so the padded
+   button and the plain links land on one line. Centring the flex boxes alone
+   is not enough when the boxes are different heights. */
 .links{
   display:flex;align-items:center;flex-wrap:wrap;gap:22px;
   font-family:var(--mono);font-size:var(--t-small);
+}
+.links > a{
+  display:inline-flex;align-items:center;
+  height:38px;line-height:1;
 }
 .links a{color:var(--dim)}
 .links a b{color:var(--text);font-weight:600}
 .links a:hover{color:var(--text);text-decoration:none}
 .cv-btn{
-  font-size:var(--t-micro);padding:8px 15px;border-radius:7px;
+  font-size:var(--t-micro);padding:0 16px;border-radius:7px;
   border:1px solid rgba(74,222,128,.32);
   color:var(--accent)!important;background:rgba(74,222,128,.07);
 }
