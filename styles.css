@@ -119,24 +119,35 @@ h1{
 .bio p{margin:0 0 14px;color:var(--dim);font-size:var(--t-body)}
 .bio a{color:var(--dim);border-bottom:1px solid var(--accent-dim)}
 .bio a:hover{color:var(--text);text-decoration:none}
-/* Every item is the same fixed height and centres its own text, so the padded
-   button and the plain links land on one line. Centring the flex boxes alone
-   is not enough when the boxes are different heights. */
+/* Stacked, one per line, each item left-aligned to the same edge. */
 .links{
-  display:flex;align-items:center;flex-wrap:wrap;gap:22px;
+  display:flex;flex-direction:column;align-items:flex-start;gap:10px;
   font-family:var(--mono);font-size:var(--t-small);
 }
-.links > a{
-  display:inline-flex;align-items:center;
-  height:38px;line-height:1;
-}
+.links > *{ line-height:1.5; }
 .links a{color:var(--dim)}
 .links a b{color:var(--text);font-weight:600}
 .links a:hover{color:var(--text);text-decoration:none}
+
+/* Email copies to the clipboard rather than opening a mail client. */
+.copy-email{
+  font:inherit;color:var(--dim);background:none;border:0;padding:0;
+  cursor:pointer;text-align:left;position:relative;
+}
+.copy-email b{color:var(--text);font-weight:600;border-bottom:1px dashed var(--line)}
+.copy-email:hover b{color:var(--accent);border-color:var(--accent-dim)}
+.copied{
+  margin-left:10px;font-size:var(--t-micro);color:var(--accent);
+  opacity:0;transition:opacity .15s ease;
+}
+.copy-email.is-copied .copied{opacity:1}
+
 .cv-btn{
+  display:inline-flex;align-items:center;height:38px;
   font-size:var(--t-micro);padding:0 16px;border-radius:7px;
   border:1px solid rgba(74,222,128,.32);
   color:var(--accent)!important;background:rgba(74,222,128,.07);
+  margin-top:6px;
 }
 .cv-btn:hover{border-color:var(--accent);text-decoration:none}
 
