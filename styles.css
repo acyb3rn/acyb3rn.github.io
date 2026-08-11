@@ -92,15 +92,14 @@ a:hover{text-decoration:underline}
   padding:74px 0 76px;
   position:relative;overflow:hidden;
 }
-/* Soft dark pool behind the hero copy so the text reads cleanly over the log
-   and grain instead of competing with them. */
+/* Glow on the glyphs themselves, not a backdrop behind the block. A large
+   radial gradient here rendered as a visible dark oval across the hero. */
 .hero .wrap{position:relative;z-index:1}
-.hero .wrap::before{
-  content:"";position:absolute;
-  left:-8%;right:-14%;top:-14%;bottom:-14%;
-  z-index:-1;pointer-events:none;
-  background:radial-gradient(ellipse 62% 58% at 32% 50%,
-             rgba(6,8,11,.92) 0%, rgba(6,8,11,.72) 42%, transparent 78%);
+.hero h1,
+.hero .role,
+.hero .bio p,
+.hero .links{
+  text-shadow:0 0 10px rgba(6,8,11,.95), 0 0 26px rgba(6,8,11,.75);
 }
 /* Real output from the Argus run, ghosted in behind the hero. The texture is
    the work itself rather than a stock pattern. Hidden from assistive tech. */
