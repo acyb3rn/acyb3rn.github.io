@@ -210,14 +210,17 @@ h1{
   text-transform:uppercase;color:#3c4550;
 }
 .card-body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
-.card-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:2px}
-.card-head h3{font-size:var(--t-lead);margin:0;letter-spacing:-.015em;font-weight:650}
-.card-head h3 a{color:var(--text)}
-.card-head h3 a:hover{color:var(--accent);text-decoration:none}
+.card-title{font-size:var(--t-lead);margin:0 0 6px;letter-spacing:-.015em;font-weight:650}
+.card-title a{color:var(--text)}
+.card-title a:hover{color:var(--accent);text-decoration:none}
+
+/* Squared off, not a pill. Own line above the title so a long title can never
+   push it onto a second row and unbalance the card. */
 .badge{
-  font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.07em;
-  text-transform:uppercase;padding:3px 8px;border-radius:99px;
-  border:1px solid;white-space:nowrap;
+  align-self:flex-start;
+  font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.1em;
+  text-transform:uppercase;padding:3px 9px;border-radius:3px;
+  border:1px solid;white-space:nowrap;margin-bottom:10px;
 }
 .badge--open{color:var(--accent);border-color:rgba(74,222,128,.32);background:rgba(74,222,128,.07)}
 .badge--closed{color:var(--dimmer);border-color:var(--line);background:var(--bg-soft)}
@@ -248,11 +251,12 @@ h1{
 .tech span{
   font-family:var(--mono);font-size:var(--t-micro);color:var(--dimmer);
   background:var(--bg-soft);border:1px solid var(--line-soft);
-  padding:3px 9px;border-radius:5px;
+  padding:4px 9px;border-radius:3px;line-height:1.3;
 }
 .actions{display:flex;flex-wrap:wrap;gap:10px}
 .btn{
-  font-size:var(--t-micro);padding:8px 15px;border-radius:7px;
+  display:inline-flex;align-items:center;height:34px;
+  font-size:var(--t-micro);padding:0 15px;border-radius:3px;
   border:1px solid var(--line);color:var(--dim);background:var(--bg-soft);
 }
 .btn:hover{border-color:#39414d;color:var(--text);text-decoration:none}

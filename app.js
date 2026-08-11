@@ -77,9 +77,16 @@
 
     var body = el("div", "card-body");
 
-    var head = el("div", "card-head");
+    // Badge sits on its own line above the title. Inline beside a long title it
+    // wrapped, which made that card's header taller than the others.
+    if (project.badge) {
+      body.appendChild(
+        el("span", "badge " + (BADGE_CLASS[project.badge] || ""), project.badge)
+      );
+    }
+
     var href = primaryUrl(project);
-    var title = el("h3");
+    var title = el("h3", "card-title");
     if (href) {
       var a = el("a", null, project.title);
       a.href = href;
@@ -89,14 +96,7 @@
     } else {
       title.textContent = project.title;
     }
-    head.appendChild(title);
-
-    if (project.badge) {
-      head.appendChild(
-        el("span", "badge " + (BADGE_CLASS[project.badge] || ""), project.badge)
-      );
-    }
-    body.appendChild(head);
+    body.appendChild(title);
 
     if (project.tagline) body.appendChild(el("p", "tagline", project.tagline));
 
