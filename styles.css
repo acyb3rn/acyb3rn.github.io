@@ -181,8 +181,27 @@ h1{
 /* projects */
 .projects{
   padding:24px 0 40px;
-  position:relative;
+  position:relative;overflow:hidden;
 }
+/* Real source from extract_size_rules.py, carrying the hero's ghosted-terminal
+   motif down into the projects section. Masked to fade IN just past the hero
+   and back out around halfway, so it never runs to a hard edge. The cards are
+   opaque, so this only shows around the heading and in the gutters. */
+.projects-code{
+  position:absolute;top:0;left:0;right:0;margin:0;z-index:0;
+  font-family:var(--mono);font-size:13px;line-height:1.9;
+  color:var(--accent);opacity:.15;
+  white-space:pre;pointer-events:none;user-select:none;
+  padding-left:32px;
+  mask-image:linear-gradient(180deg,
+    transparent 0%, rgba(0,0,0,.55) 14%, #000 30%,
+    rgba(0,0,0,.5) 46%, transparent 62%);
+  -webkit-mask-image:linear-gradient(180deg,
+    transparent 0%, rgba(0,0,0,.55) 14%, #000 30%,
+    rgba(0,0,0,.5) 46%, transparent 62%);
+}
+.projects .wrap{position:relative;z-index:1}
+@media (max-width:900px){ .projects-code{display:none} }
 .section-title{
   font-family:var(--mono);font-size:var(--t-micro);text-transform:uppercase;
   letter-spacing:.14em;color:var(--dimmer);font-weight:600;

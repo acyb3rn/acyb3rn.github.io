@@ -80,6 +80,32 @@
   </section>
 
   <section id="projects" class="projects">
+    <pre class="projects-code" aria-hidden="true">def extract_conditions(if_block: dict) -> dict[str, list[str]]:
+    """From an `if` block, pull out the condition enums we care about."""
+    conditions: dict[str, list[str]] = {}
+    if not isinstance(if_block, dict):
+        return conditions
+    for f in CONDITION_FIELDS:
+        vals = extract_enum_from_subschema(if_block, f)
+        if vals:
+            conditions[f] = vals
+    for f in INNER_CONDITION_FIELDS:
+        vals = extract_enum_from_subschema(if_block, f)
+        if vals:
+            conditions["size_container." + f] = vals
+    return conditions
+
+
+def determine_target_field(then_block: dict) -> str | None:
+    """Figure out which leaf field the `then` clause enumerates."""
+    props = then_block.get("properties", {})
+    for cname, cnode in _size_containers(props):
+        items = cnode.get("items", {}) if isinstance(cnode, dict) else {}
+        for entry in items.get("allOf", []) or []:
+            for k, v in entry.get("properties", {}).items():
+                if k in TARGET_LEAFS and "enum" in v:
+                    return cname + "." + k
+    return None</pre>
     <div class="wrap wrap--wide">
       <h2 class="section-title">Projects</h2>
       <div id="project-list"></div>
