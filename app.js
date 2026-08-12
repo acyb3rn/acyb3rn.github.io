@@ -1,168 +1,53 @@
-// Renders the project cards from PROJECTS (see projects.js).
+// The project cards are static markup now, generated from projects.js by
+// build.js. This file is only the small bit of behaviour the page needs.
 
 (function () {
   "use strict";
 
-  var BADGE_CLASS = {
-    "open source": "badge--open",
-    "closed source": "badge--closed",
-    "client work": "badge--client",
-    "spec build": "badge--spec"
-  };
-
-  function el(tag, className, html) {
-    var node = document.createElement(tag);
-    if (className) node.className = className;
-    if (html !== undefined) node.innerHTML = html;
-    return node;
-  }
-
-  function isVideo(path) {
-    return /\.(webm|mp4)$/i.test(path);
-  }
-
-  // The first link, if there is one, becomes the clickable target for the
-  // media and the title. Falls back to no link at all for closed source.
-  function primaryUrl(project) {
-    var first = (project.links || []).find(function (l) { return l.url; });
-    return first ? first.url : "";
-  }
-
-  function buildMedia(project) {
-    var href = primaryUrl(project);
-
-    var media;
-    if (!project.media) {
-      media = el("div", "card-media card-media--ph");
-      media.appendChild(el("span", null, "screenshot pending"));
-    } else if (isVideo(project.media)) {
-      media = el("video", "card-media");
-      media.src = project.media;
-      media.autoplay = true;
-      media.loop = true;
-      media.muted = true;
-      media.playsInline = true;
-      media.preload = "metadata";
-      // Shown if the browser blocks autoplay or cannot decode the video.
-      if (project.poster) media.poster = project.poster;
-    } else {
-      media = el("img", "card-media");
-      media.src = project.media;
-      media.alt = project.title + " screenshot";
-      media.loading = "lazy";
-      // If the file is missing, swap in the placeholder rather than
-      // showing a broken image icon.
-      media.onerror = function () {
-        var ph = el("div", "card-media card-media--ph");
-        ph.appendChild(el("span", null, "screenshot pending"));
-        media.replaceWith(ph);
-      };
-    }
-
-    if (!href) return media;
-
-    var link = el("a");
-    link.href = href;
-    link.target = "_blank";
-    link.rel = "noopener";
-    link.appendChild(media);
-    return link;
-  }
-
-  function buildCard(project) {
-    var card = el("article", "card");
-    card.id = project.id;
-
-    // Title and status sit above the media so the project is classified before
-    // you look at anything else.
-    var head = el("div", "card-head");
-    var href = primaryUrl(project);
-    var title = el("h3", "card-title");
-    if (href) {
-      var a = el("a", null, project.title);
-      a.href = href;
-      a.target = "_blank";
-      a.rel = "noopener";
-      title.appendChild(a);
-    } else {
-      title.textContent = project.title;
-    }
-    head.appendChild(title);
-    if (project.badge) {
-      head.appendChild(
-        el("span", "badge " + (BADGE_CLASS[project.badge] || ""), project.badge)
-      );
-    }
-    card.appendChild(head);
-
-    card.appendChild(buildMedia(project));
-
-    var body = el("div", "card-body");
-
-    if (project.tagline) body.appendChild(el("p", "tagline", project.tagline));
-
-    // Shown in full. Truncating every card mid-sentence read as unfinished.
-    if (project.description) {
-      body.appendChild(el("p", "desc", project.description));
-    }
-
-    if (project.tech && project.tech.length) {
-      var tech = el("div", "tech");
-      project.tech.forEach(function (t) { tech.appendChild(el("span", null, t)); });
-      body.appendChild(tech);
-    }
-
-    var live = (project.links || []).filter(function (l) { return l.url; });
-    if (live.length) {
-      var actions = el("div", "actions");
-      live.forEach(function (l, i) {
-        var btn = el("a", "btn" + (i === 0 ? " btn--primary" : ""), l.label);
-        btn.href = l.url;
-        btn.target = "_blank";
-        btn.rel = "noopener";
-        actions.appendChild(btn);
-      });
-      body.appendChild(actions);
-    }
-
-    card.appendChild(body);
-    return card;
-  }
-
-  var list = document.getElementById("project-list");
-  if (list && typeof PROJECTS !== "undefined") {
-    PROJECTS.forEach(function (p) { list.appendChild(buildCard(p)); });
+  // A looping video is motion the reader did not ask for. CSS cannot stop
+  // playback, so honour the OS setting here and leave the poster frame showing.
+  if (window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    Array.prototype.forEach.call(
+      document.querySelectorAll("video[autoplay]"),
+      function (v) {
+        v.autoplay = false;
+        v.loop = false;
+        v.removeAttribute("autoplay");
+        v.pause();
+      }
+    );
   }
 
   // Click the email to copy it. navigator.clipboard needs a secure context,
   // so fall back to a hidden textarea for file:// and older browsers.
   var copyBtn = document.querySelector(".copy-email");
-  if (copyBtn) {
-    copyBtn.addEventListener("click", function () {
-      var email = copyBtn.getAttribute("data-email");
+  if (!copyBtn) return;
 
-      function done() {
-        copyBtn.classList.add("is-copied");
-        setTimeout(function () { copyBtn.classList.remove("is-copied"); }, 1600);
-      }
+  copyBtn.addEventListener("click", function () {
+    var email = copyBtn.getAttribute("data-email");
 
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(email).then(done, fallback);
-      } else {
-        fallback();
-      }
+    function done() {
+      copyBtn.classList.add("is-copied");
+      setTimeout(function () { copyBtn.classList.remove("is-copied"); }, 1600);
+    }
 
-      function fallback() {
-        var ta = document.createElement("textarea");
-        ta.value = email;
-        ta.setAttribute("readonly", "");
-        ta.style.position = "fixed";
-        ta.style.opacity = "0";
-        document.body.appendChild(ta);
-        ta.select();
-        try { document.execCommand("copy"); done(); } catch (e) { /* ignore */ }
-        document.body.removeChild(ta);
-      }
-    });
-  }
+    function fallback() {
+      var ta = document.createElement("textarea");
+      ta.value = email;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); done(); } catch (e) { /* ignore */ }
+      document.body.removeChild(ta);
+    }
+
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(email).then(done, fallback);
+    } else {
+      fallback();
+    }
+  });
 })();

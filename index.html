@@ -6,10 +6,28 @@
 <title>Aleksandre Giorgadze // Automation &amp; AI Tools</title>
 <meta name="description" content="Python developer working on workflow automation and AI-augmented internal tools. Based in Tbilisi, Georgia.">
 
+<link rel="canonical" href="https://acyb3rn.github.io/">
+
 <meta property="og:title" content="Aleksandre Giorgadze // Automation &amp; AI Tools">
 <meta property="og:description" content="Python developer working on workflow automation and AI-augmented internal tools.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://acyb3rn.github.io/">
+<meta property="og:site_name" content="acyb3rn">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://acyb3rn.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Aleksandre Giorgadze, Python developer working on automation and AI-augmented internal tools.">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Aleksandre Giorgadze // Automation &amp; AI Tools">
+<meta name="twitter:description" content="Python developer working on workflow automation and AI-augmented internal tools.">
+<meta name="twitter:image" content="https://acyb3rn.github.io/og-image.png">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="favicon.png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0a0c10">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +41,6 @@
 
 <header class="nav">
   <div class="wrap nav-inner">
-    <a class="brand" href="#top">acyb3rn</a>
     <nav>
       <a href="#projects">Projects</a>
       <a href="Aleksandre_Giorgadze_CV.pdf" target="_blank" rel="noopener">CV</a>
@@ -107,7 +124,93 @@ return r.json()["data"]["accessToken"]</pre>
 
     <div class="wrap wrap--wide">
       <h2 class="section-title">Projects</h2>
-      <div id="project-list"></div>
+      <div id="project-list">
+      <!-- cards:start -->
+<article class="card" id="product-field-analyzer">
+  <div class="card-head">
+    <h3 class="card-title"><a href="https://github.com/acyb3rn/product-field-analyzer" target="_blank" rel="noopener">Product Field Analyzer</a></h3>
+    <span class="badge badge--open">open source</span>
+  </div>
+  <a href="https://github.com/acyb3rn/product-field-analyzer" target="_blank" rel="noopener"><video class="card-media" src="assets/product-field-analyzer.webm" poster="assets/product-field-analyzer.jpg" autoplay loop muted playsinline preload="metadata"></video></a>
+  <div class="card-body">
+    <p class="tagline">Vision-model attribute extraction with a human in the loop</p>
+    <p class="desc">Reads product photographs and fills in missing marketplace attributes, shipped as a CLI and a Tkinter desktop client over a shared analyzer core. The model is constrained to JSON-only output and returns a per-field confidence score with <em>unknown</em> as a first-class value, so an uncertain field is recorded as an abstention rather than a wrong answer. Each item retries with configurable backoff. The desktop client runs analysis on a worker thread that reports back through a queue polled on the Tk main loop, which keeps the interface responsive and lets a run be cancelled mid-flight. Results land in a review queue where every row is approved or rejected before anything is exported.</p>
+    <div class="tech"><span>python</span><span>openai vision</span><span>flask</span><span>tkinter</span></div>
+    <div class="actions"><a class="btn btn--primary" href="https://github.com/acyb3rn/product-field-analyzer" target="_blank" rel="noopener">GitHub</a></div>
+  </div>
+</article>
+
+<article class="card" id="amazon-size-rule-extractor">
+  <div class="card-head">
+    <h3 class="card-title"><a href="https://github.com/acyb3rn/amazon-size-rule-extractor" target="_blank" rel="noopener">Size Rule Extractor</a></h3>
+    <span class="badge badge--open">open source</span>
+  </div>
+  <a href="https://github.com/acyb3rn/amazon-size-rule-extractor" target="_blank" rel="noopener"><img class="card-media" src="assets/amazon-size-rule-extractor.png" alt="Size Rule Extractor screenshot" loading="lazy"></a>
+  <div class="card-body">
+    <p class="tagline">Flattens deeply nested JSON Schema into a queryable table</p>
+    <p class="desc">A schema flattener for Amazon's product type definitions, which encode size validation as if/then/else chains nested several levels deep across roughly 450&nbsp;KB of JSON Schema per product type. The walker recurses through every branch, lifting condition enums out of each <code>if</code> and the target field out of its <code>then</code>, and auto-detects the size container so apparel, shirt and footwear schemas resolve down the same path despite differing shapes. Every emitted row carries its rule index and branch path, so any value traces back to the exact position in the schema it came from. Output is an openpyxl workbook, one filterable sheet per product type across thirty types.</p>
+    <div class="tech"><span>python</span><span>json schema</span><span>openpyxl</span></div>
+    <div class="actions"><a class="btn btn--primary" href="https://github.com/acyb3rn/amazon-size-rule-extractor" target="_blank" rel="noopener">GitHub</a></div>
+  </div>
+</article>
+
+<article class="card" id="argus">
+  <div class="card-head">
+    <h3 class="card-title"><a href="https://github.com/acyb3rn/argus" target="_blank" rel="noopener">Argus</a></h3>
+    <span class="badge badge--open">open source</span>
+  </div>
+  <a href="https://github.com/acyb3rn/argus" target="_blank" rel="noopener"><img class="card-media" src="assets/argus.png" alt="Argus screenshot" loading="lazy"></a>
+  <div class="card-body">
+    <p class="tagline">Unattended sync against a portal with no public API</p>
+    <p class="desc">An unattended fetcher for a university portal that offers neither notifications nor bulk download. Playwright drives the Google OAuth flow once and a response hook lifts the bearer token out of the login traffic; from there the browser is discarded entirely and a <code>requests</code> session talks to the portal's internal REST API directly, refreshing against the token endpoint as credentials expire. Materials are diffed against a persisted seen-set so only new files are pulled, filenames are sanitised per course, and notification payloads are parsed for assignment deadlines. Runs under launchd at 08:00 daily and completed a full semester without a missed day.</p>
+    <div class="tech"><span>python</span><span>playwright</span><span>requests</span><span>cron</span></div>
+    <div class="actions"><a class="btn btn--primary" href="https://github.com/acyb3rn/argus" target="_blank" rel="noopener">GitHub</a></div>
+  </div>
+</article>
+
+<article class="card" id="aware">
+  <div class="card-head">
+    <h3 class="card-title"><a href="https://getaware.app/en" target="_blank" rel="noopener">Aware</a></h3>
+    <span class="badge badge--closed">closed source</span>
+  </div>
+  <a href="https://getaware.app/en" target="_blank" rel="noopener"><img class="card-media" src="assets/aware.jpg" alt="Aware screenshot" loading="lazy"></a>
+  <div class="card-body">
+    <p class="tagline">Interrupts navigation to force a deliberate decision</p>
+    <p class="desc">A Chrome extension that inserts a pause between intent and habit. Where a conventional blocker resolves a flagged domain to allow or deny, Aware interrupts navigation and holds the request until an explicit decision is made, turning an automatic action into a chosen one. Built end to end as an independent product: concept, interface and implementation. Closed source while it is prepared for release as a subscription.</p>
+    <div class="tech"><span>javascript</span><span>chrome extensions api</span></div>
+    <div class="actions"><a class="btn btn--primary" href="https://getaware.app/en" target="_blank" rel="noopener">Visit Site</a></div>
+  </div>
+</article>
+
+<article class="card" id="portex">
+  <div class="card-head">
+    <h3 class="card-title"><a href="https://portexgeo.com/" target="_blank" rel="noopener">Portex Georgia</a></h3>
+    <span class="badge badge--client">client work</span>
+  </div>
+  <a href="https://portexgeo.com/" target="_blank" rel="noopener"><img class="card-media" src="assets/portex.jpg" alt="Portex Georgia screenshot" loading="lazy"></a>
+  <div class="card-body">
+    <p class="tagline">Bilingual marketing site plus an authenticated client portal</p>
+    <p class="desc">The web presence for an international freight forwarder, built and maintained as sole developer: a bilingual English and Georgian marketing site alongside an authenticated client portal that surfaces status, route and ETA per container. Auth and Postgres run on Supabase. Structured data and SEO were part of the build rather than a later pass over it. An ongoing engagement rather than a completed handoff.</p>
+    <div class="tech"><span>react</span><span>typescript</span><span>tailwind</span><span>supabase</span></div>
+    <div class="actions"><a class="btn btn--primary" href="https://portexgeo.com/" target="_blank" rel="noopener">Visit Site</a></div>
+  </div>
+</article>
+
+<article class="card" id="choppy">
+  <div class="card-head">
+    <h3 class="card-title"><a href="https://acyb3rn.github.io/choppy-barbershop/en/" target="_blank" rel="noopener">Choppy</a></h3>
+    <span class="badge badge--spec">spec build</span>
+  </div>
+  <a href="https://acyb3rn.github.io/choppy-barbershop/en/" target="_blank" rel="noopener"><img class="card-media" src="assets/choppy.jpg" alt="Choppy screenshot" loading="lazy"></a>
+  <div class="card-body">
+    <p class="tagline">Static, booking-led, built for cellular</p>
+    <p class="desc">A speculative build for a Tbilisi barbershop, structured around booking: services, team, hours and a Georgian and English locale split with the Georgian as the default, since that is what the customers actually read. Astro was chosen so the output ships as static HTML with almost no client-side JavaScript — the traffic here is overwhelmingly mobile over cellular, where page weight outweighs every other consideration.</p>
+    <div class="tech"><span>astro</span><span>html</span><span>css</span></div>
+    <div class="actions"><a class="btn btn--primary" href="https://acyb3rn.github.io/choppy-barbershop/en/" target="_blank" rel="noopener">Live preview</a></div>
+  </div>
+</article>
+      <!-- cards:end -->
+      </div>
     </div>
   </section>
 
@@ -133,7 +236,6 @@ return r.json()["data"]["accessToken"]</pre>
   </div>
 </footer>
 
-<script src="projects.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
