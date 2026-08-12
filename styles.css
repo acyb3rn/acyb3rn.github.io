@@ -159,7 +159,10 @@ h1{
    length stays readable; only its box moves to the middle. */
 .hero .wrap{text-align:center}
 .bio{max-width:640px;margin:0 auto 32px}
-.bio p{margin:0 0 14px;color:var(--dim);font-size:var(--t-body)}
+/* text-wrap:pretty tells the browser to avoid leaving a single word alone on
+   the last line. Centred text makes a widow especially obvious. Unsupported in
+   Firefox, so the final phrase is also bound with non-breaking spaces. */
+.bio p{margin:0 0 14px;color:var(--dim);font-size:var(--t-body);text-wrap:pretty}
 .bio a{color:var(--dim);border-bottom:1px solid var(--accent-dim)}
 .bio a:hover{color:var(--text);text-decoration:none}
 /* Stacked, one per line, each item left-aligned to the same edge.
