@@ -133,7 +133,10 @@ h1{
   font-family:var(--mono);font-size:var(--t-small);color:var(--accent);
   margin:0 0 26px;letter-spacing:-.01em;
 }
-.bio{max-width:640px;margin-bottom:32px}
+/* Hero copy is centred in the page. The bio keeps its 640px cap so the line
+   length stays readable; only its box moves to the middle. */
+.hero .wrap{text-align:center}
+.bio{max-width:640px;margin:0 auto 32px}
 .bio p{margin:0 0 14px;color:var(--dim);font-size:var(--t-body)}
 .bio a{color:var(--dim);border-bottom:1px solid var(--accent-dim)}
 .bio a:hover{color:var(--text);text-decoration:none}
@@ -141,7 +144,7 @@ h1{
    display and line-height are normalised because a <button> and an <a> do not
    produce the same line box by default, which showed up as uneven gaps. */
 .links{
-  display:flex;flex-direction:column;align-items:flex-start;gap:12px;
+  display:flex;flex-direction:column;align-items:center;gap:12px;
   font-family:var(--mono);font-size:var(--t-small);
 }
 .links > *{ display:block;line-height:1.4;margin:0;padding:0; }
@@ -155,7 +158,7 @@ h1{
 .copy-email{
   font:inherit;line-height:1.4;
   color:var(--dim);background:none;border:0;padding:0;
-  cursor:pointer;text-align:left;position:relative;
+  cursor:pointer;text-align:center;position:relative;
 }
 .copy-email b{color:var(--text);font-weight:600;border-bottom:1px dashed var(--line)}
 .copy-email:hover b{color:var(--accent);border-color:var(--accent-dim)}
@@ -196,11 +199,11 @@ h1{
   -webkit-mask-image:radial-gradient(ellipse 72% 84% at 50% 50%,
     #000 30%, rgba(0,0,0,.45) 62%, transparent 84%);
 }
-/* Positioned from the left so the block's own width decides where it ends and
-   nothing runs off the right edge. Both clear the copy: the hero one starts
-   past the contact lines, the projects one past the PROJECTS label. */
-.island--hr{ left:56%; bottom:8px; opacity:.20; }
-.island--pr{ left:30%; top:0;      opacity:.18; }
+/* Anchored to the same 32px gutter the content sits on, one to each side, so
+   they line up with the layout instead of floating at arbitrary percentages.
+   With the hero copy centred, both gutters are clear. */
+.island--hero-l{ left:32px;  bottom:24px; opacity:.20; }
+.island--proj-r{ right:32px; top:0;       opacity:.18; }
 
 .projects .wrap{position:relative;z-index:1}
 

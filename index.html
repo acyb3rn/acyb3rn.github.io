@@ -53,7 +53,7 @@
   =======================================
     Done. 90 new file(s) downloaded.</pre>
 
-    <pre class="island island--hr" aria-hidden="true">r = session.post(
+    <pre class="island island--hero-l" aria-hidden="true">r = session.post(
     f"{BASE_URL}/api/v1/auth/token/refresh",
     json={"refresh_token": refresh_tok},
     timeout=15,
@@ -89,7 +89,7 @@ return r.json()["data"]["accessToken"]</pre>
   </section>
 
   <section id="projects" class="projects">
-    <pre class="island island--pr" aria-hidden="true">def parse_model_json(content: str) -> dict[str, Any]:
+    <pre class="island island--proj-r" aria-hidden="true">def parse_model_json(content: str) -> dict[str, Any]:
     try:
         return json.loads(content)
     except json.JSONDecodeError as exc:
