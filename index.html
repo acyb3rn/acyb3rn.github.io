@@ -53,6 +53,14 @@
   =======================================
     Done. 90 new file(s) downloaded.</pre>
 
+    <pre class="island island--hero-tl" aria-hidden="true">if "if" in node and "then" in node:
+    if_block   = node.get("if",  {}) or {}
+    then_block = node.get("then", {}) or {}
+    else_block = node.get("else", {}) or {}
+
+    conditions  = extract_conditions(if_block)
+    target_leaf = determine_target_field(then_block)</pre>
+
     <pre class="island island--hero-l" aria-hidden="true">r = session.post(
     f"{BASE_URL}/api/v1/auth/token/refresh",
     json={"refresh_token": refresh_tok},
@@ -89,11 +97,13 @@ return r.json()["data"]["accessToken"]</pre>
   </section>
 
   <section id="projects" class="projects">
-    <pre class="island island--proj-r" aria-hidden="true">def parse_model_json(content: str) -> dict[str, Any]:
-    try:
-        return json.loads(content)
-    except json.JSONDecodeError as exc:
-        raise ValueError(f"not valid JSON") from exc</pre>
+    <pre class="island island--proj-r" aria-hidden="true">SYSTEM_PROMPT = (
+    "You are a product attribute extraction assistant. "
+    "You analyze product images and extract "
+    "characteristics accurately. "
+    "When uncertain, clearly mark low confidence. "
+    "Return valid JSON only."
+)</pre>
 
     <div class="wrap wrap--wide">
       <h2 class="section-title">Projects</h2>

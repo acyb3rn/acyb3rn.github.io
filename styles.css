@@ -202,8 +202,9 @@ h1{
 /* Anchored to the same 32px gutter the content sits on, one to each side, so
    they line up with the layout instead of floating at arbitrary percentages.
    With the hero copy centred, both gutters are clear. */
-.island--hero-l{ left:32px;  bottom:24px; opacity:.20; }
-.island--proj-r{ right:32px; top:0;       opacity:.18; }
+.island--hero-tl{ left:32px;  top:12px;    opacity:.17; }
+.island--hero-l { left:32px;  bottom:24px; opacity:.20; }
+.island--proj-r { right:32px; top:0;       opacity:.18; }
 
 .projects .wrap{position:relative;z-index:1}
 
