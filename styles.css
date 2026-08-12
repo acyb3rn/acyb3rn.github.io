@@ -7,8 +7,8 @@
   --text:#eceff3;
   /* --dim carries the descriptions, taglines and bio — the copy people came to
      read. At #a7b0bb it sat back like furniture instead of reading as text. */
-  --dim:#c6ced8;
-  --dimmer:#98a2af;          /* was #6c7684 — failed WCAG AA on the page bg */
+  --dim:#d8dee6;
+  --dimmer:#aab3c0;          /* was #6c7684 — failed WCAG AA on the page bg */
   --accent:#4ade80;
   --accent-dim:#2b7f4f;
   --blue:#7cb7ff;
